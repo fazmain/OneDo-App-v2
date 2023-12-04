@@ -2,42 +2,49 @@
 
 import React from "react";
 import {
-  HStack,
   Box,
   Text,
   Heading,
-  IconButtonm,
   Checkbox,
 } from "@chakra-ui/react";
-import { CloseIcon } from "@chakra-ui/icons";
 
 const Routines = ({ routines, onDeleteRoutine }) => {
   return (
-    <Box mt={4} borderRadius={"lg"}>
+    <Box
+      borderRadius="lg"
+      maxH="400px"
+      overflowY="auto" // Enable vertical scrolling
+      w="100%"
+      borderWidth={1}
+      p={4}
+      // CSS for multi-column layout
+      columnCount={{ base: 1, md: 2 }} // Adjust column count based on responsiveness
+      columnGap="4"
+    >
       <Heading size="lg" pb={4}>
         Time Notes
       </Heading>
-      <HStack spacing={4}>
-        {routines.map((routine, index) => (
-          <Checkbox
-            key={index}
-            p={3}
-            colorScheme="cyan"
-            borderWidth={1}
-            borderColor={"cyan.500"}
-            borderRadius="lg"
-            onChange={() => onDeleteRoutine(index)}
-          >
-            {!routine.time ? (
-              <Text fontSize="lg">{routine.name}</Text>
-            ) : (
-              <Text fontSize="lg">
-                {routine.name} at {routine.time}
-              </Text>
-            )}
-          </Checkbox>
-        ))}
-      </HStack>
+      {routines.map((routine, index) => (
+        <Checkbox
+          key={index}
+          p={2}
+          mr = {2}
+          mb = {2}
+          colorScheme="cyan"
+          borderWidth={1}
+          borderColor="cyan.500"
+          borderRadius="lg"
+          onChange={() => onDeleteRoutine(index)}
+        >
+          {!routine.time ? (
+            <Text fontSize="lg">{routine.name}</Text>
+          ) : (
+            <Text fontSize="lg">
+              {routine.name} at {routine.time}
+            </Text>
+          )}
+        </Checkbox>
+      ))}
     </Box>
   );
 };

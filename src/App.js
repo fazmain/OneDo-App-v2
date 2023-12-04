@@ -150,9 +150,9 @@ function App() {
   };
 
   return (
-    <Box p={{ base: 4, md: 8, lg: 50 }}>
+    <Box p={{ base: 4, md: 8, lg: 50 }} maxH="900px">
       <Grid
-        templateRows={{ base: "repeat(3, 1fr)", md: "repeat(2, 1fr)" }}
+        templateRows={{ base: "repeat(3, 1fr)", md: "repeat(1, 1fr)" }}
         templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(5, 1fr)" }}
         gap={4}
       >
@@ -177,11 +177,11 @@ function App() {
           {completedTasks.length > 0 ? (
             <CompletedTasks tasks={completedTasks} />
           ) : null}
-          {completedTasks.length > 0 ?
-          <Button mt={4} color="red.400" onClick={clearCompletedTasks}>
-            Clear
-          </Button>
-          : null }
+          {completedTasks.length > 0 ? (
+            <Button mt={4} color="red.400" onClick={clearCompletedTasks}>
+              Clear
+            </Button>
+          ) : null}
         </GridItem>
       </Grid>
     </Box>

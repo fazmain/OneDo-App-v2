@@ -23,7 +23,15 @@ const CompletedTasks = ({ tasks }) => {
   }
 
   return (
-    <Box mt={4} borderRadius={"lg"}>
+    <Box
+      mt={4}
+      maxH="200px" // Set a fixed height
+      overflowY="scroll" // Enable vertical scrolling
+      w="100%"
+      borderWidth={1}
+      borderRadius={"lg"}
+      p = {4}
+    >
       <Heading size="lg" pb={4}>
         Completed Tasks
       </Heading>
