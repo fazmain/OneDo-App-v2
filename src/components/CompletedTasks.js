@@ -5,9 +5,9 @@ import { VStack, Box, Text, Heading } from "@chakra-ui/react";
 
 const CompletedTaskItem = ({ task }) => {
   return (
-    <Box p={2} bg="green.700" borderRadius="lg" boxShadow="md" width="100%">
+    <Box p={2} bg="green.800" borderRadius="lg" boxShadow="md" width="100%">
       <Text as="del" fontSize="lg" color="white">
-        {task.name} (Completed)
+        {task.name}
       </Text>
     </Box>
   );

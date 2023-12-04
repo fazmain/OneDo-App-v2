@@ -35,7 +35,7 @@ const Greeting = ({ username }) => {
   };
 
   return (
-    <Box p = {3} borderWidth={1} borderRadius={"lg"} bg = "cyan.900">
+    <Box p = {3} borderRadius={"lg"} bg="blue.900">
     <VStack
       align="flex-start"
       width="100%"

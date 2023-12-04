@@ -12,8 +12,14 @@ import {
 const RoutineInfo = ({ onAddRoutine }) => {
   const [routineName, setRoutineName] = useState('');
   const [routineTime, setRoutineTime] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleAddRoutine = () => {
+    if (routineName === '' || routineTime === '') {
+      setErrorMessage('Cannot add an empty routine');
+      return;
+    }
+
     const newRoutine = {
       name: routineName,
       time: routineTime,
@@ -24,10 +30,12 @@ const RoutineInfo = ({ onAddRoutine }) => {
     onAddRoutine(newRoutine);
     setRoutineName('');
     setRoutineTime('');
+    setErrorMessage('');
   };
 
   return (
     <VStack spacing={4} align="stretch">
+      {errorMessage && <p>{errorMessage}</p>}
       <FormControl>
         <FormLabel>Add a note with a time</FormLabel>
         <Input
