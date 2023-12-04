@@ -7,6 +7,7 @@ import {
   Input,
   Button,
   VStack,
+  Text
 } from '@chakra-ui/react';
 
 const RoutineInfo = ({ onAddRoutine }) => {
@@ -15,8 +16,8 @@ const RoutineInfo = ({ onAddRoutine }) => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleAddRoutine = () => {
-    if (routineName === '' || routineTime === '') {
-      setErrorMessage('Cannot add an empty routine');
+    if (routineName === '') {
+      setErrorMessage('Cannot add an empty note');
       return;
     }
 
@@ -35,7 +36,6 @@ const RoutineInfo = ({ onAddRoutine }) => {
 
   return (
     <VStack spacing={4} align="stretch">
-      {errorMessage && <p>{errorMessage}</p>}
       <FormControl>
         <FormLabel>Add a note with a time</FormLabel>
         <Input
@@ -53,6 +53,7 @@ const RoutineInfo = ({ onAddRoutine }) => {
           onChange={(e) => setRoutineTime(e.target.value)}
         />
       </FormControl>
+      {errorMessage && <Text color='red.500' align={"center"} borderRadius={"lg"}>{errorMessage}</Text>}
       <Button colorScheme="blue" onClick={handleAddRoutine}>
         Add Time Note
       </Button>
