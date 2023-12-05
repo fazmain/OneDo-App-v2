@@ -7,8 +7,8 @@ import TaskItem from "./TaskItem";
 const Tasks = ({ tasks, onTaskComplete, onSubtaskComplete }) => {
   return (
     <Box
-      maxH="700px" // Set a fixed height
-      overflowY="scroll" // Enable vertical scrolling
+      maxH="700px" 
+      overflowY="scroll"
       w="100%"
       p={4}
       bg="gray.700"

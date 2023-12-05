@@ -6,6 +6,7 @@ import Tasks from "./components/Tasks";
 import CompletedTasks from "./components/CompletedTasks";
 import Routines from "./components/Routines";
 import RoutineInfo from "./components/RoutineInfo";
+import Footer from "./components/Footer";
 
 const priorityLevels = {
   Urgent: 1,
@@ -150,41 +151,44 @@ function App() {
   };
 
   return (
-    <Box p={{ base: 4, md: 8, lg: 50 }} maxH="900px">
-      <Grid
-        templateRows={{ base: "repeat(3, 1fr)", md: "repeat(1, 1fr)" }}
-        templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(5, 1fr)" }}
-        gap={4}
-      >
-        <GridItem colSpan={{ base: 1, md: 1 }}>
-          <VStack spacing={4} align="stretch">
-            <Greeting username={username} />
-            <TaskInfo onSubmit={addTask} />
-            <RoutineInfo onAddRoutine={addRoutine} />
-          </VStack>
-        </GridItem>
-        <GridItem colSpan={{ base: 1, md: 2 }} colStart={{ lg: 2 }}>
-          <Tasks
-            tasks={tasks}
-            onTaskComplete={handleTaskComplete}
-            onSubtaskComplete={handleSubtaskComplete}
-          />
-        </GridItem>
-        <GridItem colSpan={{ base: 1, md: 2 }} colStart={{ lg: 4 }}>
-          {routines.length > 0 ? (
-            <Routines routines={routines} onDeleteRoutine={deleteRoutine} />
-          ) : null}
-          {completedTasks.length > 0 ? (
-            <CompletedTasks tasks={completedTasks} />
-          ) : null}
-          {completedTasks.length > 0 ? (
-            <Button mt={4} color="red.400" onClick={clearCompletedTasks}>
-              Clear
-            </Button>
-          ) : null}
-        </GridItem>
-      </Grid>
-    </Box>
+    <>
+      <Box p={{ base: 4, md: 8, lg: 50 }} maxH="900px">
+        <Grid
+          templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(5, 1fr)" }}
+          gap={4}
+        >
+          <GridItem colSpan={{ base: 1, md: 1 }}>
+            <VStack spacing={4} align="stretch">
+              <Greeting username={username} />
+              <TaskInfo onSubmit={addTask} />
+              <RoutineInfo onAddRoutine={addRoutine} />
+            </VStack>
+          </GridItem>
+          <GridItem colSpan={{ base: 1, md: 2 }} colStart={{ lg: 2 }}>
+            <Tasks
+              tasks={tasks}
+              onTaskComplete={handleTaskComplete}
+              onSubtaskComplete={handleSubtaskComplete}
+            />
+          </GridItem>
+          <GridItem colSpan={{ base: 1, md: 2 }} colStart={{ lg: 4 }}>
+            {routines.length > 0 ? (
+              <Routines routines={routines} onDeleteRoutine={deleteRoutine} />
+            ) : null}
+            {completedTasks.length > 0 ? (
+              <CompletedTasks tasks={completedTasks} />
+            ) : null}
+            {completedTasks.length > 0 ? (
+              <Button mt={4} color="red.400" onClick={clearCompletedTasks}>
+                Clear
+              </Button>
+            ) : null}
+          </GridItem>
+        </Grid>
+        <Footer />
+      </Box>
+      
+    </>
   );
 }
 
